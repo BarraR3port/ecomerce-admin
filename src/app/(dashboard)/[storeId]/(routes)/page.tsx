@@ -1,13 +1,18 @@
-"use client";
+import prisma from "@/lib/prismadb";
 
-import { UserButton } from "@clerk/nextjs";
+interface DashboardPageProps {
+	params: {
+		storeId: string;
+	};
+}
+export default async function DashboardPage(props: DashboardPageProps) {
+	const { storeId } = props.params;
 
-const DashboardPage = () => {
-	return (
-		<div className="p-4">
-			<UserButton afterSignOutUrl="/" />
-		</div>
-	);
-};
+	const store = await prisma.store.findUnique({
+		where: {
+			id: storeId
+		}
+	});
 
-export default DashboardPage;
+	return <div className="p-4">Active store: {store?.name}</div>;
+}
