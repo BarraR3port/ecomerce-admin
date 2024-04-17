@@ -73,5 +73,7 @@
 
   body {
     @apply bg-background text-foreground;
+    height: 100dvh;
+    width: 100dvw;
   }
 }
