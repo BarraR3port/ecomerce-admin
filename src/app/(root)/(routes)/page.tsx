@@ -1,7 +1,6 @@
 "use client";
 
 import { useStoreModal } from "@/hooks/use-store-modal";
-import { UserButton } from "@clerk/nextjs";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -11,10 +10,6 @@ export default function Home() {
 		if (!open) {
 			onOpen();
 		}
-	}, []);
-	return (
-		<main className="p-4">
-			<UserButton afterSignOutUrl="/" />
-		</main>
-	);
+	}, [open, onOpen]);
+	return null;
 }

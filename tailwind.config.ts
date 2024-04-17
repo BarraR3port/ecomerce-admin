@@ -17,10 +17,27 @@ const config = {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
-				background: "hsl(var(--background))",
+				background: {
+					DEFAULT: "hsl(var(--background))",
+					container: {
+						DEFAULT: "hsl(var(--background-container))",
+						secondary: "hsl(var(--background-container-secondary))"
+					}
+				},
 				foreground: "hsl(var(--foreground))",
 				primary: {
-					DEFAULT: "hsl(var(--primary))",
+					50: "hsl(var(--primary-50))",
+					100: "hsl(var(--primary-100))",
+					200: "hsl(var(--primary-200))",
+					300: "hsl(var(--primary-300))",
+					400: "hsl(var(--primary-400))",
+					500: "hsl(var(--primary-500))",
+					600: "hsl(var(--primary-600))",
+					700: "hsl(var(--primary-700))",
+					800: "hsl(var(--primary-800))",
+					900: "hsl(var(--primary-900))",
+					950: "hsl(var(--primary-950))",
+					DEFAULT: "hsl(var(--primary-500))",
 					foreground: "hsl(var(--primary-foreground))"
 				},
 				secondary: {
@@ -46,6 +63,33 @@ const config = {
 				card: {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))"
+				},
+				success: {
+					50: "hsl(var(--success-50))",
+					100: "hsl(var(--success-100))",
+					200: "hsl(var(--success-200))",
+					300: "hsl(var(--success-300))",
+					400: "hsl(var(--success-400))",
+					500: "hsl(var(--success-500))",
+					600: "hsl(var(--success-600))",
+					700: "hsl(var(--success-700))",
+					800: "hsl(var(--success-800))",
+					900: "hsl(var(--success-900))",
+					950: "hsl(var(--success-950))",
+					DEFAULT: "hsl(var(--success))",
+					foreground: "hsl(var(--success-foreground))"
+				},
+				warning: {
+					DEFAULT: "hsl(var(--warning))",
+					foreground: "hsl(var(--warning-foreground))"
+				},
+				error: {
+					DEFAULT: "hsl(var(--error))",
+					foreground: "hsl(var(--error-foreground))"
+				},
+				info: {
+					DEFAULT: "hsl(var(--info))",
+					foreground: "hsl(var(--info-foreground))"
 				}
 			},
 			borderRadius: {
