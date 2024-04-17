@@ -61,33 +61,32 @@ export default function StoreSwitcher({ className, stores = [] }: StoreSwitcherP
 			<PopoverContent className="w-[200px] p-0">
 				<Command>
 					<CommandInput placeholder="Buscar tienda..." />
+
 					<CommandEmpty>Tienda no encontrada</CommandEmpty>
-					<CommandGroup>
-						{formattedStores.map(store => {
-							console.log(store, currentStore?.value === store.value, currentStore, store.value);
-							return (
-								<CommandItem
-									key={store.value}
-									value={store.value}
-									onSelect={() => onStoreSelect(store)}
-									className={cn(
-										currentStore?.value === store.value && "bg-background-container-secondary"
-									)}
-								>
-									<StoreIcon className="mr-2 h-4 w-4" />
-									{store.label}
-									<Check
-										className={cn(
-											"ml-auto h-4 w-4",
-											currentStore?.value === store.value ? "text-success-500" : "opacity-0"
-										)}
-									/>
-								</CommandItem>
-							);
-						})}
-					</CommandGroup>
-					<CommandSeparator />
 					<CommandList>
+						<CommandGroup>
+							{formattedStores.map(store => {
+								console.log(store, currentStore?.value === store.value, currentStore, store.value);
+								return (
+									<CommandItem
+										key={store.value}
+										value={store.value}
+										onSelect={() => onStoreSelect(store)}
+										className={cn(currentStore?.value === store.value && "bg-background-container")}
+									>
+										<StoreIcon className="mr-2 h-4 w-4" />
+										{store.label}
+										<Check
+											className={cn(
+												"ml-auto h-4 w-4",
+												currentStore?.value === store.value ? "text-success-500" : "opacity-0"
+											)}
+										/>
+									</CommandItem>
+								);
+							})}
+						</CommandGroup>
+						<CommandSeparator />
 						<CommandGroup>
 							<CommandItem
 								onSelect={() => {

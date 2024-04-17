@@ -1,4 +1,4 @@
-import { type InferType, object, string, date, array, boolean } from "yup";
+import { type InferType, array, boolean, date, object, string } from "yup";
 
 export const StoreModalFormSchema = object({
 	name: string()
