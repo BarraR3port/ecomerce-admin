@@ -1,11 +1,13 @@
 "use client";
 
+import { ApiAlert } from "@/components/ui/api-alert";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
+import { useOrigin } from "@/hooks/use-origin";
 import AlertModal from "@/modals/alert-modal";
 import { SettingsFormSchema, type SettingsFormType } from "@/schemas/SettingsSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -26,6 +28,8 @@ export default function SettingsForm({ store }: SettingsFormProps) {
 	const { toast } = useToast();
 	const params = useParams();
 	const router = useRouter();
+
+	const origin = useOrigin();
 	const form = useForm<SettingsFormType>({
 		resolver: yupResolver(SettingsFormSchema),
 		defaultValues: store
@@ -120,6 +124,8 @@ export default function SettingsForm({ store }: SettingsFormProps) {
 					</Button>
 				</form>
 			</Form>
+			<Separator />
+			<ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="public" />
 		</>
 	);
 }
