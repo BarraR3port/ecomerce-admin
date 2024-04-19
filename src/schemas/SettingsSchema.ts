@@ -1,6 +1,6 @@
 import { type InferType, object, string } from "yup";
 
-export const StoreModalFormSchema = object({
+export const SettingsFormSchema = object({
 	name: string()
 		.required("El nombre es requerido")
 		.min(4, "El nombre debe tener al menos 4 caracteres")
@@ -8,4 +8,4 @@ export const StoreModalFormSchema = object({
 		.trim()
 });
 
-export type StoreModalFormType = InferType<typeof StoreModalFormSchema>;
+export type SettingsFormType = InferType<typeof SettingsFormSchema>;
