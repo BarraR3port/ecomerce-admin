@@ -5,7 +5,16 @@ const nextConfig = {
 	reactStrictMode: true,
 	transpilePackages: ["lucide-react"],
 	swcMinify: true,
-	distDir: "dist"
+	distDir: "dist",
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "utfs.io",
+				port: ""
+			}
+		]
+	}
 };
 
 const millionConfig = {
