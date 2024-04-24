@@ -25,13 +25,14 @@ export function BillboardClient({ billboards }: BillboardClientProps) {
 					onClick={() => {
 						router.push(`/${params.storeId}/billboards/new`);
 					}}
+					variant="outline"
 				>
 					<Plus className="mr-2 w-4 h-4" />
 					Agregar Cartelera
 				</Button>
 			</div>
 			<Separator />
-			<DataTable columns={columns} data={billboards} />
+			<DataTable columns={columns} data={billboards} searchKey="label" />
 		</>
 	);
 }
