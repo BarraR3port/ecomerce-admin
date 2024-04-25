@@ -6,14 +6,14 @@ import { ImageOff, Trash } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-interface BillboardImageUploadProps {
+interface ImageUploadProps {
 	onChange: (value: string) => void;
 	onRemove: (value: string) => void;
 	onLoadChange: (value: boolean) => void;
 	url: string;
 }
 
-export default function BillboardImageUpload({ onChange, onRemove, url, onLoadChange }: BillboardImageUploadProps) {
+export default function ImageUpload({ onChange, onRemove, url, onLoadChange }: ImageUploadProps) {
 	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {

@@ -9,6 +9,16 @@ export default function MainNavBar({ className, ..._props }: React.HTMLAttribute
 	const params = useParams();
 	const routes = [
 		{
+			href: `/${params.storeId}/products`,
+			label: "Productos",
+			active: pathname.includes(`/${params.storeId}/products`)
+		},
+		{
+			href: `/${params.storeId}/orders`,
+			label: "Pedidos",
+			active: pathname.includes(`/${params.storeId}/orders`)
+		},
+		{
 			href: `/${params.storeId}/billboards`,
 			label: "Carteleras",
 			active: pathname.includes(`/${params.storeId}/billboards`)
@@ -27,11 +37,6 @@ export default function MainNavBar({ className, ..._props }: React.HTMLAttribute
 			href: `/${params.storeId}/colors`,
 			label: "Colores",
 			active: pathname.includes(`/${params.storeId}/colors`)
-		},
-		{
-			href: `/${params.storeId}/products`,
-			label: "Productos",
-			active: pathname.includes(`/${params.storeId}/products`)
 		},
 		{
 			href: `/${params.storeId}/settings`,

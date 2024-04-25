@@ -3,13 +3,13 @@
 import { Button } from "@ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
 import { Copy } from "lucide-react";
-import type { BillboardColumn } from "./BillboardsColumn";
+import type { Column } from "./Column";
 
-interface BillboardCellActionProps {
-	billboard: BillboardColumn;
+interface CellActionProps {
+	billboard: Column;
 }
 
-export default function BillboardCellIdAction({ billboard }: BillboardCellActionProps) {
+export default function CellIdAction({ billboard }: CellActionProps) {
 	function onCopy() {
 		navigator.clipboard.writeText(billboard.id);
 	}

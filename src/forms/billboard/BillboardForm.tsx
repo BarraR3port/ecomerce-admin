@@ -1,6 +1,6 @@
 "use client";
 
-import BillboardImageUpload from "@/components/billboard/BillboardImageUpload";
+import ImageUpload from "@/components/billboard/ImageUpload";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import Heading from "@/components/ui/heading";
@@ -147,7 +147,7 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 									<FormItem>
 										<FormLabel>Imagen</FormLabel>
 										<FormControl className="w-[200px]">
-											<BillboardImageUpload
+											<ImageUpload
 												url={field?.value}
 												onChange={file => {
 													form.setValue("imageUrl", file);

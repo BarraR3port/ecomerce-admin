@@ -6,14 +6,14 @@ import { Separator } from "@ui/separator";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import ApiLists from "../api/ApiLists";
-import { type BillboardColumn, columns } from "./BillboardsColumn";
+import { type Column, columns } from "./Column";
 import { DataTable } from "@ui/data-table";
 
-interface BillboardClientProps {
-	billboards: BillboardColumn[];
+interface ClientProps {
+	billboards: Column[];
 }
 
-export function BillboardClient({ billboards }: BillboardClientProps) {
+export function Client({ billboards }: ClientProps) {
 	const router = useRouter();
 
 	const params = useParams();

@@ -8,13 +8,13 @@ import axios from "axios";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import type { BillboardColumn } from "./BillboardsColumn";
+import type { Column } from "./Column";
 
-interface BillboardCellActionProps {
-	billboard: BillboardColumn;
+interface CellActionProps {
+	billboard: Column;
 }
 
-export default function BillboardCellAction({ billboard }: BillboardCellActionProps) {
+export default function CellAction({ billboard }: CellActionProps) {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();

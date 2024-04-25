@@ -1,4 +1,4 @@
-import { BillboardClient } from "@/components/billboard/BillboardClient";
+import { Client } from "@/components/billboard/Client";
 import prisma from "@/lib/prismadb";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
@@ -27,7 +27,7 @@ export default async function BillBoardsPage({ params }: { params: { storeId: st
 	return (
 		<div className="flex-col">
 			<div className="flex-1 space-y-4 p-5 pt-6">
-				<BillboardClient billboards={formattedBillboards} />
+				<Client billboards={formattedBillboards} />
 			</div>
 		</div>
 	);

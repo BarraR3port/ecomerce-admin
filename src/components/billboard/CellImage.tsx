@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import type { BillboardColumn } from "./BillboardsColumn";
+import type { Column } from "./Column";
 
-interface BillboardCellImageProps {
-	billboard: BillboardColumn;
+interface CellImageProps {
+	billboard: Column;
 }
 
-export default function BillboardCellImage({ billboard }: BillboardCellImageProps) {
+export default function CellImage({ billboard }: CellImageProps) {
 	return (
 		<div className="w-full h-14">
 			<Image className="rounded-md" src={billboard.imageUrl} alt={billboard.label} width={100} height={56} />
