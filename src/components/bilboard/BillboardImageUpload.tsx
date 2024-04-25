@@ -7,13 +7,12 @@ import { Trash } from "lucide-react";
 import Image from "next/image";
 
 interface BillboardImageUploadProps {
-	disabled: boolean;
 	onChange: (value: string) => void;
 	onRemove: (value: string) => void;
 	value: string[];
 }
 
-export default function BillboardImageUpload({ disabled, onChange, onRemove, value }: BillboardImageUploadProps) {
+export default function BillboardImageUpload({ onChange, onRemove, value }: BillboardImageUploadProps) {
 	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {

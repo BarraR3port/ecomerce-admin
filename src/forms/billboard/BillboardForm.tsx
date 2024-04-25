@@ -1,14 +1,12 @@
 "use client";
 
 import BillboardImageUpload from "@/components/bilboard/BillboardImageUpload";
-import { ApiAlert } from "@/components/ui/api-alert";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
-import { UploadButton } from "@/components/uploadthing";
 import { useOrigin } from "@/hooks/use-origin";
 import AlertModal from "@/modals/alert-modal";
 import { BillboardFormSchema, type BillboardFormType } from "@/schemas/BillboardSchema";
@@ -36,7 +34,6 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 	const toastDescription = billboard ? "Cartelera editada correctamente" : "Cartelera creada correctamente";
 	const actionMessage = billboard ? "Guardar cambios" : "Crear";
 
-	const origin = useOrigin();
 	const form = useForm<BillboardFormType>({
 		resolver: yupResolver(BillboardFormSchema),
 		defaultValues: billboard || {
@@ -67,6 +64,7 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 					variant: "success"
 				});
 				router.replace(`/${params.storeId}/billboards`);
+				router.refresh();
 			}
 		} catch (error) {
 			console.error(error);
@@ -135,7 +133,6 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 												form.setValue("imageUrl", file);
 											}}
 											onRemove={onRemove}
-											disabled={loading}
 										/>
 									</FormControl>
 									<FormMessage />

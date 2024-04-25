@@ -1,6 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import { UTApi } from "uploadthing/server";
 
 export async function GET(
 	_req: Request,
@@ -116,11 +117,17 @@ export async function DELETE(
 
 		if (!storeByUserId) return new NextResponse("No se encontró la tienda", { status: 404 });
 
-		const billboard = await prisma.billboard.deleteMany({
+		const billboard = await prisma.billboard.delete({
 			where: {
 				id: params.billboardId
 			}
 		});
+
+		console.log("[BILLBOARDS][DELETE]", billboard);
+
+		const newUrl = billboard.imageUrl.substring(billboard.imageUrl.lastIndexOf("/") + 1);
+		const utapi = new UTApi();
+		await utapi.deleteFiles(newUrl);
 
 		return NextResponse.json(billboard);
 	} catch (error) {
