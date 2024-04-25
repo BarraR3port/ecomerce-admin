@@ -17,7 +17,7 @@ const buttonVariants = cva(
 				outline:
 					"border border-input bg-background-container shadow-sm hover:bg-accent hover:text-accent-foreground",
 				secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-				ghost: "hover:bg-accent hover:text-accent-foreground",
+				ghost: "hover:text-accent-foreground",
 				link: "text-primary underline-offset-4 hover:underline",
 				success: "bg-success text-white shadow-sm hover:bg-success/80",
 				primary: "bg-primary text-white shadow-sm hover:bg-primary/80"
@@ -49,14 +49,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		const Comp = asChild ? Slot : "button";
 		return (
 			<Comp
-				className={cn(buttonVariants({ variant, size, className }), loading ? "opacity-50" : "")}
+				className={cn(buttonVariants({ variant, size, className }), loading ? "opacity-50" : "", "relative")}
 				ref={ref}
 				{...props}
 				disabled={loading || props.disabled}
 			>
-				{prevIcon}
+				{prevIcon && <div className="left-2 absolute">{prevIcon}</div>}
 				{props.children}
-				{loading && <LoaderCircle className={cn("ml-2 animate-spin")} size={14} />}
+				{loading && <LoaderCircle className={cn("right-2 animate-spin absolute")} size={14} />}
 			</Comp>
 		);
 	}

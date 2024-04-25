@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
+import { utapi } from "@/lib/uploadthing";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { UTApi } from "uploadthing/server";
 
 export async function GET(
 	_req: Request,
@@ -124,7 +124,6 @@ export async function DELETE(
 		});
 
 		const newUrl = billboard.imageUrl.substring(billboard.imageUrl.lastIndexOf("/") + 1);
-		const utapi = new UTApi();
 		await utapi.deleteFiles(newUrl).catch(error => {
 			console.log("[BILLBOARDS][DELETE][UTAPI]", error);
 		});

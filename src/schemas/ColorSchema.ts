@@ -7,7 +7,7 @@ export const ColorFormSchema = object({
 		.max(50, "El nombre no puede tener más de 50 caracteres")
 		.trim(),
 	value: string()
-		.matches(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, "El valor debe ser un color hexadecimal")
+		.matches(/^#([A-Fa-f0-9]{8}|[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, "El valor debe ser un color hexadecimal")
 		.required("El valor es requerido")
 		.min(4, "El valor debe tener al menos 4 caracteres")
 		.max(50, "El valor no puede tener más de 50 caracteres")

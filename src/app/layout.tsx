@@ -9,6 +9,8 @@ import { Inter } from "next/font/google";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import "./globals.css";
+import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,9 +31,13 @@ export default function RootLayout({
 				<body className={inter.className}>
 					<NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 					<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-						<Toaster />
-						<ModalProvider />
-						{children}
+						<TooltipProvider>
+							<Toaster />
+							<ModalProvider />
+
+							{children}
+							<TailwindIndicator />
+						</TooltipProvider>
 					</ThemeProvider>
 				</body>
 			</html>

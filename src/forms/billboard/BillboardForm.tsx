@@ -1,6 +1,6 @@
 "use client";
 
-import BillboardImageUpload from "@/components/bilboard/BillboardImageUpload";
+import BillboardImageUpload from "@/components/billboard/BillboardImageUpload";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import Heading from "@/components/ui/heading";

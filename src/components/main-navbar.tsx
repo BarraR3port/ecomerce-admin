@@ -29,6 +29,11 @@ export default function MainNavBar({ className, ..._props }: React.HTMLAttribute
 			active: pathname.includes(`/${params.storeId}/colors`)
 		},
 		{
+			href: `/${params.storeId}/products`,
+			label: "Productos",
+			active: pathname.includes(`/${params.storeId}/products`)
+		},
+		{
 			href: `/${params.storeId}/settings`,
 			label: "Ajustes",
 			active: pathname.includes(`/${params.storeId}/settings`)

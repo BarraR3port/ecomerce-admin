@@ -1,4 +1,4 @@
-import { BillboardClient } from "@/components/bilboard/BillboardClient";
+import { BillboardClient } from "@/components/billboard/BillboardClient";
 import prisma from "@/lib/prismadb";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
