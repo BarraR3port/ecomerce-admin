@@ -3,16 +3,17 @@
 import { useEffect, useState } from "react";
 import { UploadButton } from "@/components/uploadthing";
 import { Button } from "../ui/button";
-import { Trash } from "lucide-react";
+import { ImageOff, Trash } from "lucide-react";
 import Image from "next/image";
 
 interface BillboardImageUploadProps {
 	onChange: (value: string) => void;
 	onRemove: (value: string) => void;
-	value: string[];
+	onLoadChange: (value: boolean) => void;
+	url: string;
 }
 
-export default function BillboardImageUpload({ onChange, onRemove, value }: BillboardImageUploadProps) {
+export default function BillboardImageUpload({ onChange, onRemove, url, onLoadChange }: BillboardImageUploadProps) {
 	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {
@@ -24,9 +25,9 @@ export default function BillboardImageUpload({ onChange, onRemove, value }: Bill
 	}
 
 	return (
-		<div>
-			<div className="mb-4 flex items-center gap-4">
-				{value.map(url => (
+		<>
+			<div className="mb-4 flex items-center gap-4 w-[200px] h-[200px]">
+				{url && (
 					<div key={url} className="relative w-[200px] h-[200px] rounded-md overflow-hidden">
 						<div className="z-10 absolute top-2 right-2">
 							<Button type="button" onClick={() => onRemove(url)} variant="destructive" size="icon">
@@ -35,7 +36,12 @@ export default function BillboardImageUpload({ onChange, onRemove, value }: Bill
 						</div>
 						<Image src={url} fill className="object-cover" alt="image" />
 					</div>
-				))}
+				)}
+				{!url && (
+					<div className="w-[200px] h-[200px] bg-background-container rounded-md flex items-center justify-center">
+						<ImageOff className="h-8 w-8" />
+					</div>
+				)}
 			</div>
 			<UploadButton
 				endpoint="imageUploader"
@@ -43,14 +49,17 @@ export default function BillboardImageUpload({ onChange, onRemove, value }: Bill
 					res.forEach(file => {
 						onChange(file.url);
 					});
+					onLoadChange(false);
 				}}
+				onUploadBegin={() => onLoadChange(true)}
 				onUploadError={(error: Error) => {
 					console.log(error);
 					// Do something with the error.
 					alert(`ERROR! ${error.message}`);
+					onLoadChange(false);
 				}}
 				appearance={{
-					button: "ut-ready:bg-background-container-secondary ut-uploading:cursor-not-allowed bg-success bg-none after:bg-background-container-secondary after:opacity-60 ",
+					button: "w-[200px] ut-ready:bg-background-container-secondary ut-uploading:cursor-not-allowed bg-success bg-none after:bg-background-container-secondary after:opacity-60 ",
 					container: "w-max flex-row rounded-md bg-slate-800",
 					allowedContent: "hidden"
 				}}
@@ -58,6 +67,6 @@ export default function BillboardImageUpload({ onChange, onRemove, value }: Bill
 					button: "Subir Imagen"
 				}}
 			/>
-		</div>
+		</>
 	);
 }

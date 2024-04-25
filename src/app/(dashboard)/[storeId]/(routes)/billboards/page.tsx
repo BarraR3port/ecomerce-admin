@@ -15,6 +15,7 @@ export default async function BillBoardsPage({ params }: { params: { storeId: st
 		return {
 			id: billboard.id,
 			label: billboard.label,
+			imageUrl: billboard.imageUrl,
 			createdAt: format(billboard.createdAt, "dd-MMMM-yy HH:mm", {
 				locale: es
 			})

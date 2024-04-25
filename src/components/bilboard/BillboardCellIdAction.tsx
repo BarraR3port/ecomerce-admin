@@ -1,15 +1,9 @@
 "use client";
 
 import { Button } from "@ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuTrigger
-} from "@ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
+import { Copy } from "lucide-react";
 import type { BillboardColumn } from "./BillboardsColumn";
-import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 
 interface BillboardCellActionProps {
 	billboard: BillboardColumn;
@@ -23,7 +17,7 @@ export default function BillboardCellIdAction({ billboard }: BillboardCellAction
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant="ghost">
+				<Button variant="ghost" className="p-0 m-0">
 					<span className="sr-only">Abrir menu</span>
 					{billboard.id.split("-")[0]}
 				</Button>

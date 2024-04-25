@@ -7,7 +7,6 @@ import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
-import { useOrigin } from "@/hooks/use-origin";
 import AlertModal from "@/modals/alert-modal";
 import { BillboardFormSchema, type BillboardFormType } from "@/schemas/BillboardSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -118,54 +117,60 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 			</div>
 			<Separator />
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
-					<div className="grid grid-cols-3 gap-8">
-						<FormField
-							control={form.control}
-							name="imageUrl"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Imagen</FormLabel>
-									<FormControl>
-										<BillboardImageUpload
-											value={field?.value ? [field.value] : []}
-											onChange={file => {
-												form.setValue("imageUrl", file);
-											}}
-											onRemove={onRemove}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 w-full flex-col">
+					<div className="space-y-2">
+						<div className="grid grid-cols-3 ">
+							<FormField
+								control={form.control}
+								name="label"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Etiqueta</FormLabel>
+										<FormControl>
+											<Input
+												autoComplete="off"
+												disabled={loading}
+												placeholder="Nombre de la cartelera"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+						</div>
+						<div className="grid grid-cols-3 ">
+							<FormField
+								control={form.control}
+								name="imageUrl"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Imagen</FormLabel>
+										<FormControl className="w-[200px]">
+											<BillboardImageUpload
+												url={field?.value}
+												onChange={file => {
+													form.setValue("imageUrl", file);
+													form.clearErrors("imageUrl");
+													setLoading(false);
+												}}
+												onLoadChange={value => {
+													setLoading(value);
+												}}
+												onRemove={onRemove}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+						</div>
 					</div>
-					<div className="grid grid-cols-3 gap-8">
-						<FormField
-							control={form.control}
-							name="label"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Etiqueta</FormLabel>
-									<FormControl>
-										<Input
-											autoComplete="off"
-											disabled={loading}
-											placeholder="Nombre de la cartelera"
-											{...field}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-					</div>
-					<Button className="ml-auto" type="submit" loading={loading}>
+					<Button type="submit" variant="success" loading={loading} className="w-[200px]">
 						{actionMessage}
 					</Button>
 				</form>
 			</Form>
-			<Separator />
 		</>
 	);
 }
