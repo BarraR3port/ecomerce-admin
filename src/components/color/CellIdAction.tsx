@@ -3,13 +3,13 @@
 import { Button } from "@ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
 import { Copy } from "lucide-react";
-import type { ColorColumn } from "./ColorsColumn";
+import type { Column } from "./Column";
 
-interface ColorCellActionProps {
-	color: ColorColumn;
+interface CellActionProps {
+	color: Column;
 }
 
-export default function ColorCellIdAction({ color }: ColorCellActionProps) {
+export default function CellIdAction({ color }: CellActionProps) {
 	function onCopy() {
 		navigator.clipboard.writeText(color.id);
 	}

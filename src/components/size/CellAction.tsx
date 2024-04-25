@@ -8,13 +8,13 @@ import axios from "axios";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import type { ColorColumn } from "./ColorsColumn";
+import type { Column } from "./Column";
 
-interface ColorCellActionProps {
-	color: ColorColumn;
+interface CellActionProps {
+	size: Column;
 }
 
-export default function ColorCellAction({ color }: ColorCellActionProps) {
+export default function CellAction({ size }: CellActionProps) {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
@@ -22,13 +22,13 @@ export default function ColorCellAction({ color }: ColorCellActionProps) {
 	const { toast } = useToast();
 
 	function edit() {
-		router.push(`/${params.storeId}/colors/${color.id}`);
+		router.push(`/${params.storeId}/sizes/${size.id}`);
 	}
 
 	async function onDelete() {
 		setLoading(true);
 		try {
-			const response = await axios.delete(`/api/${params.storeId}/colors/${color.id}`);
+			const response = await axios.delete(`/api/${params.storeId}/size/${size.id}`);
 			if (response?.data) {
 				toast({
 					title: "Medida eliminada correctamente",

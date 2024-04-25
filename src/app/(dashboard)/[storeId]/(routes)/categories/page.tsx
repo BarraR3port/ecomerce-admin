@@ -1,5 +1,5 @@
-import type { CategoryColumn } from "@/components/category/CategoriesColumn";
-import { CategoryClient } from "@/components/category/CategoryClient";
+import type { Column } from "@/components/category/Column";
+import { Client } from "@/components/category/Client";
 import prisma from "@/lib/prismadb";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
@@ -17,7 +17,7 @@ export default async function CategoriesPage({ params }: { params: { storeId: st
 		}
 	});
 
-	const formattedCategories: CategoryColumn[] = categories.map(category => {
+	const formattedCategories: Column[] = categories.map(category => {
 		return {
 			id: category.id,
 			name: category.name,
@@ -30,7 +30,7 @@ export default async function CategoriesPage({ params }: { params: { storeId: st
 	return (
 		<div className="flex-col">
 			<div className="flex-1 space-y-4 p-5 pt-6">
-				<CategoryClient categories={formattedCategories} />
+				<Client categories={formattedCategories} />
 			</div>
 		</div>
 	);

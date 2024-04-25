@@ -1,21 +1,21 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import CategoryCellAction from "./CategoryCellAction";
-import CategoryCellIdAction from "./CategoryCellIdAction";
+import CellAction from "./CellAction";
+import CellIdAction from "./CellIdAction";
 
-export type CategoryColumn = {
+export type Column = {
 	id: string;
 	name: string;
 	billboardLabel: string;
 	createdAt: string;
 };
 
-export const columns: ColumnDef<CategoryColumn>[] = [
+export const columns: ColumnDef<Column>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
-		cell: ({ row }) => <CategoryCellIdAction category={row.original} />
+		cell: ({ row }) => <CellIdAction category={row.original} />
 	},
 	{
 		accessorKey: "name",
@@ -31,6 +31,6 @@ export const columns: ColumnDef<CategoryColumn>[] = [
 	},
 	{
 		id: "actions",
-		cell: ({ row }) => <CategoryCellAction category={row.original} />
+		cell: ({ row }) => <CellAction category={row.original} />
 	}
 ];

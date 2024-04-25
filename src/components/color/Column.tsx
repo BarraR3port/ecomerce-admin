@@ -1,21 +1,21 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import ColorCellAction from "./ColorCellAction";
-import ColorCellIdAction from "./ColorCellIdAction";
+import CellAction from "./CellAction";
+import CellIdAction from "./CellIdAction";
 
-export type ColorColumn = {
+export type Column = {
 	id: string;
 	name: string;
 	value: string;
 	createdAt: string;
 };
 
-export const columns: ColumnDef<ColorColumn>[] = [
+export const columns: ColumnDef<Column>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
-		cell: ({ row }) => <ColorCellIdAction color={row.original} />
+		cell: ({ row }) => <CellIdAction color={row.original} />
 	},
 	{
 		accessorKey: "name",
@@ -42,6 +42,6 @@ export const columns: ColumnDef<ColorColumn>[] = [
 	},
 	{
 		id: "actions",
-		cell: ({ row }) => <ColorCellAction color={row.original} />
+		cell: ({ row }) => <CellAction color={row.original} />
 	}
 ];

@@ -6,14 +6,14 @@ import { Separator } from "@ui/separator";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import ApiLists from "../api/ApiLists";
-import { type CategoryColumn, columns } from "./CategoriesColumn";
+import { type Column, columns } from "./Column";
 import { DataTable } from "@ui/data-table";
 
-interface CategoryClientProps {
-	categories: CategoryColumn[];
+interface ClientProps {
+	sizes: Column[];
 }
 
-export function CategoryClient({ categories }: CategoryClientProps) {
+export function Client({ sizes }: ClientProps) {
 	const router = useRouter();
 
 	const params = useParams();
@@ -21,22 +21,22 @@ export function CategoryClient({ categories }: CategoryClientProps) {
 	return (
 		<>
 			<div className="flex items-center justify-between">
-				<Heading title={`Categorías (${categories.length})`} description="Categorías de la tienda" />
+				<Heading title={`Medidas (${sizes.length})`} description="Medida de la tienda" />
 				<Button
 					onClick={() => {
-						router.push(`/${params.storeId}/categories/new`);
+						router.push(`/${params.storeId}/sizes/new`);
 					}}
 					variant="outline"
 				>
 					<Plus className="mr-2 w-4 h-4" />
-					Crear Categoría
+					Crear Medida
 				</Button>
 			</div>
 			<Separator />
-			<DataTable columns={columns} data={categories} searchKey="name" />
-			<Heading title="API" description="Llamados a la api para Categorías" />
+			<DataTable columns={columns} data={sizes} searchKey="name" />
+			<Heading title="API" description="Llamados a la api para Medida" />
 			<Separator />
-			<ApiLists entityName="categories" entityIdName="categoryId" />
+			<ApiLists entityName="sizes" entityIdName="sizeId" />
 		</>
 	);
 }

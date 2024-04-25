@@ -1,21 +1,21 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import SizeCellAction from "./SizeCellAction";
-import SizeCellIdAction from "./SizeCellIdAction";
+import CellAction from "./CellAction";
+import CellIdAction from "./CellIdAction";
 
-export type SizeColumn = {
+export type Column = {
 	id: string;
 	name: string;
 	value: string;
 	createdAt: string;
 };
 
-export const columns: ColumnDef<SizeColumn>[] = [
+export const columns: ColumnDef<Column>[] = [
 	{
 		accessorKey: "id",
 		header: "Id",
-		cell: ({ row }) => <SizeCellIdAction size={row.original} />
+		cell: ({ row }) => <CellIdAction size={row.original} />
 	},
 	{
 		accessorKey: "name",
@@ -31,6 +31,6 @@ export const columns: ColumnDef<SizeColumn>[] = [
 	},
 	{
 		id: "actions",
-		cell: ({ row }) => <SizeCellAction size={row.original} />
+		cell: ({ row }) => <CellAction size={row.original} />
 	}
 ];

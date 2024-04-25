@@ -3,13 +3,13 @@
 import { Button } from "@ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
 import { Copy } from "lucide-react";
-import type { SizeColumn } from "./SizesColumn";
+import type { Column } from "./Column";
 
-interface SizeCellActionProps {
-	size: SizeColumn;
+interface CellActionProps {
+	size: Column;
 }
 
-export default function SizeCellIdAction({ size }: SizeCellActionProps) {
+export default function CellIdAction({ size }: CellActionProps) {
 	function onCopy() {
 		navigator.clipboard.writeText(size.id);
 	}

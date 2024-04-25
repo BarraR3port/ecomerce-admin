@@ -8,13 +8,13 @@ import axios from "axios";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import type { CategoryColumn } from "./CategoriesColumn";
+import type { Column } from "./Column";
 
-interface CategoryCellActionProps {
-	category: CategoryColumn;
+interface CellActionProps {
+	color: Column;
 }
 
-export default function CategoryCellAction({ category }: CategoryCellActionProps) {
+export default function CellAction({ color }: CellActionProps) {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
@@ -22,16 +22,16 @@ export default function CategoryCellAction({ category }: CategoryCellActionProps
 	const { toast } = useToast();
 
 	function edit() {
-		router.push(`/${params.storeId}/categories/${category.id}`);
+		router.push(`/${params.storeId}/colors/${color.id}`);
 	}
 
 	async function onDelete() {
 		setLoading(true);
 		try {
-			const response = await axios.delete(`/api/${params.storeId}/categories/${category.id}`);
+			const response = await axios.delete(`/api/${params.storeId}/colors/${color.id}`);
 			if (response?.data) {
 				toast({
-					title: "Categoría eliminada correctamente",
+					title: "Medida eliminada correctamente",
 					variant: "success"
 				});
 				router.refresh();
@@ -39,7 +39,7 @@ export default function CategoryCellAction({ category }: CategoryCellActionProps
 		} catch (error) {
 			console.error(error);
 			toast({
-				title: "Ocurrió un error al eliminar la categoría de tu tienda",
+				title: "Ocurrió un error al eliminar la medida de tu tienda",
 				variant: "error"
 			});
 		} finally {

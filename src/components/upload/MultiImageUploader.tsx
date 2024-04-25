@@ -1,13 +1,12 @@
+import { cn } from "@/lib/utils";
 import { useDropzone } from "@uploadthing/react";
 import { CloudUpload, ImageUp, MonitorUp } from "lucide-react";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { generateClientDropzoneAccept } from "uploadthing/client";
 import { Button } from "../ui/button";
+import { Progress } from "../ui/progress";
 import { useUploadThing } from "../uploadthing";
 import ImageUpload from "./ImageUpload";
-import { Progress } from "../ui/progress";
-import { cn } from "@/lib/utils";
-import { Separator } from "../ui/separator";
 
 export type UploadedImage = {
 	url: string;

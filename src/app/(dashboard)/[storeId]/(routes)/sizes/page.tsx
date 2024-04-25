@@ -1,5 +1,5 @@
-import type { SizeColumn } from "@/components/size/SizesColumn";
-import { SizeClient } from "@/components/size/SizeClient";
+import type { Column } from "@/components/size/Column";
+import { Client } from "@/components/size/Client";
 import prisma from "@/lib/prismadb";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
@@ -14,7 +14,7 @@ export default async function SizePage({ params }: { params: { storeId: string }
 		}
 	});
 
-	const formattedSizes: SizeColumn[] = sizes.map(size => {
+	const formattedSizes: Column[] = sizes.map(size => {
 		return {
 			id: size.id,
 			name: size.name,
@@ -27,7 +27,7 @@ export default async function SizePage({ params }: { params: { storeId: string }
 	return (
 		<div className="flex-col">
 			<div className="flex-1 space-y-4 p-5 pt-6">
-				<SizeClient sizes={formattedSizes} />
+				<eClient sizes={formattedSizes} />
 			</div>
 		</div>
 	);

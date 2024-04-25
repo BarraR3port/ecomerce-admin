@@ -3,13 +3,13 @@
 import { Button } from "@ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
 import { Copy } from "lucide-react";
-import type { CategoryColumn } from "./CategoriesColumn";
+import type { Column } from "./Column";
 
-interface categoryCellActionProps {
-	category: CategoryColumn;
+interface CellActionProps {
+	category: Column;
 }
 
-export default function CategoryCellIdAction({ category }: categoryCellActionProps) {
+export default function CellIdAction({ category }: CellActionProps) {
 	function onCopy() {
 		navigator.clipboard.writeText(category.id);
 	}

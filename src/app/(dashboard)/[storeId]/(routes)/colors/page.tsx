@@ -1,5 +1,5 @@
-import { ColorClient } from "@/components/color/ColorClient";
-import type { ColorColumn } from "@/components/color/ColorsColumn";
+import { Client } from "@/components/color/Client";
+import type { Column } from "@/components/color/Column";
 import prisma from "@/lib/prismadb";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
@@ -14,7 +14,7 @@ export default async function ColorPage({ params }: { params: { storeId: string 
 		}
 	});
 
-	const formattedColors: ColorColumn[] = colors.map(color => {
+	const formattedColors: Column[] = colors.map(color => {
 		return {
 			id: color.id,
 			name: color.name,
@@ -27,7 +27,7 @@ export default async function ColorPage({ params }: { params: { storeId: string 
 	return (
 		<div className="flex-col">
 			<div className="flex-1 space-y-4 p-5 pt-6">
-				<ColorClient colors={formattedColors} />
+				<Client colors={formattedColors} />
 			</div>
 		</div>
 	);
