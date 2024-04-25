@@ -1,13 +1,13 @@
 "use client";
 
-import { Plus } from "lucide-react";
 import { Button } from "@ui/button";
 import Heading from "@ui/heading";
-import { useParams, useRouter } from "next/navigation";
-import { columns, type BillboardColumn } from "./BillboardsColumn";
-import { DataTable } from "./BillboardsDataTable";
-import ApiLists from "../api/ApiLists";
 import { Separator } from "@ui/separator";
+import { Plus } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import ApiLists from "../api/ApiLists";
+import { type BillboardColumn, columns } from "./BillboardsColumn";
+import { DataTable } from "./BillboardsDataTable";
 
 interface BillboardClientProps {
 	billboards: BillboardColumn[];

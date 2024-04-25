@@ -1,14 +1,14 @@
 "use client";
 
+import AlertModal from "@/modals/alert-modal";
 import { Button } from "@ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
-import { Edit, MoreHorizontal, Trash } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
-import type { BillboardColumn } from "./BillboardsColumn";
-import { useState } from "react";
 import { useToast } from "@ui/use-toast";
 import axios from "axios";
-import AlertModal from "@/modals/alert-modal";
+import { Edit, MoreHorizontal, Trash } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+import type { BillboardColumn } from "./BillboardsColumn";
 
 interface BillboardCellActionProps {
 	billboard: BillboardColumn;

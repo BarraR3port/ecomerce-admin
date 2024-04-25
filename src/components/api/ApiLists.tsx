@@ -1,9 +1,9 @@
 "use client";
 
 import { useOrigin } from "@/hooks/use-origin";
+import { ApiAlert } from "@ui/api-alert";
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
-import { ApiAlert } from "@ui/api-alert";
 
 interface ApiListsProps {
 	entityName: string;

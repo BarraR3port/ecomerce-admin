@@ -2,19 +2,19 @@
 
 import {
 	type ColumnDef,
+	type ColumnFiltersState,
 	flexRender,
 	getCoreRowModel,
-	useReactTable,
+	getFilteredRowModel,
 	getPaginationRowModel,
-	type ColumnFiltersState,
-	getFilteredRowModel
+	useReactTable
 } from "@tanstack/react-table";
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/table";
 import { Button } from "@ui/button";
 import { Input } from "@ui/input";
-import { useState } from "react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/table";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];

@@ -1,8 +1,8 @@
 import { BillboardClient } from "@/components/bilboard/BillboardClient";
 import prisma from "@/lib/prismadb";
-import React from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import React from "react";
 
 export default async function BillBoardsPage({ params }: { params: { storeId: string } }) {
 	const billboards = await prisma.billboard.findMany({

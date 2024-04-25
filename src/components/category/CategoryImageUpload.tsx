@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { UploadButton } from "@/components/uploadthing";
 import { Button } from "@ui/button";
 import { ImageOff, Trash } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface BillboardImageUploadProps {
 	onChange: (value: string) => void;

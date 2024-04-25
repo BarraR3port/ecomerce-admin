@@ -2,8 +2,8 @@
 
 import type { ColumnDef } from "@tanstack/react-table";
 import CategoryCellAction from "./CategoryCellAction";
-import BillboardCellImage from "./CategoryCellImage";
 import CategoryCellIdAction from "./CategoryCellIdAction";
+import BillboardCellImage from "./CategoryCellImage";
 
 export type CategoryColumn = {
 	id: string;
