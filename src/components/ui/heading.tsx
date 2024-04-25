@@ -5,7 +5,7 @@ interface HeadingProps {
 
 export default function Heading({ title, description }: HeadingProps) {
 	return (
-		<div>
+		<div className="space-y-1">
 			<h2 className="text-3xl font-bold tracking-right">{title}</h2>
 			<p className="text-sm text-muted-foreground">{description}</p>
 		</div>

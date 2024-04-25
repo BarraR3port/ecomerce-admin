@@ -4,17 +4,17 @@ import { Button } from "@ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ui/dropdown-menu";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import type { BillboardColumn } from "./BillboardsColumn";
+import type { CategoryColumn } from "./CategoriesColumn";
 import { useState } from "react";
 import { useToast } from "@ui/use-toast";
 import axios from "axios";
 import AlertModal from "@/modals/alert-modal";
 
 interface BillboardCellActionProps {
-	billboard: BillboardColumn;
+	category: CategoryColumn;
 }
 
-export default function BillboardCellAction({ billboard }: BillboardCellActionProps) {
+export default function CategoryCellAction({ category }: BillboardCellActionProps) {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
@@ -22,16 +22,16 @@ export default function BillboardCellAction({ billboard }: BillboardCellActionPr
 	const { toast } = useToast();
 
 	function edit() {
-		router.push(`/${params.storeId}/billboards/${billboard.id}`);
+		router.push(`/${params.storeId}/categories/${category.id}`);
 	}
 
 	async function onDelete() {
 		setLoading(true);
 		try {
-			const response = await axios.delete(`/api/${params.storeId}/billboards/${billboard.id}`);
+			const response = await axios.delete(`/api/${params.storeId}/categories/${category.id}`);
 			if (response?.data) {
 				toast({
-					title: "Cartelera eliminada correctamente",
+					title: "Categoría eliminada correctamente",
 					variant: "success"
 				});
 				router.refresh();
@@ -39,7 +39,7 @@ export default function BillboardCellAction({ billboard }: BillboardCellActionPr
 		} catch (error) {
 			console.error(error);
 			toast({
-				title: "Ocurrió un error al eliminar la cartelera de tu tienda",
+				title: "Ocurrió un error al eliminar la categoría de tu tienda",
 				variant: "error"
 			});
 		} finally {

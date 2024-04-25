@@ -8,7 +8,8 @@
 		"**/Thumbs.db": true,
 		"**/node_modules": true,
 		"**/.vscode": true,
-		"**/.next": true
+		"**/.next": true,
+		"**/dist": true
 	},
 	"explorerExclude.backup": {},
 	"cSpell.language": "en,es,es-ES"

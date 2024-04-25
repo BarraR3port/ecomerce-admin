@@ -22,10 +22,10 @@ export async function POST(
 
 		const body = await req.json();
 
-		const { label, imageUrl } = body;
+		const { name, billboardId } = body;
 
-		if (!label) return new NextResponse("Etiqueta requerida", { status: 400 });
-		if (!imageUrl) return new NextResponse("Url de la imagen requerida", { status: 400 });
+		if (!name) return new NextResponse("Nombre requerido", { status: 400 });
+		if (!billboardId) return new NextResponse("billboardId requerida", { status: 400 });
 
 		const storeByUserId = await prisma.store.findFirst({
 			where: {
@@ -36,17 +36,17 @@ export async function POST(
 
 		if (!storeByUserId) return new NextResponse("No se encontró la tienda", { status: 404 });
 
-		const store = await prisma.billboard.create({
+		const category = await prisma.category.create({
 			data: {
-				label,
-				imageUrl,
+				name,
+				billboardId,
 				storeId: params.storeId
 			}
 		});
 
-		return NextResponse.json(store);
+		return NextResponse.json(category);
 	} catch (error) {
-		console.log("[BILLBOARDS][POST]", error);
+		console.log("[CATEGORIES][POST]", error);
 		return new NextResponse("Error Interno", { status: 500 });
 	}
 }
@@ -66,15 +66,18 @@ export async function GET(
 			return new NextResponse("ID de la tienda requerido", { status: 400 });
 		}
 
-		const billboards = await prisma.billboard.findMany({
+		const categories = await prisma.category.findMany({
 			where: {
 				storeId: params.storeId
+			},
+			include: {
+				billboard: true
 			}
 		});
 
-		return NextResponse.json(billboards);
+		return NextResponse.json(categories);
 	} catch (error) {
-		console.log("[BILLBOARDS][GET]", error);
+		console.log("[CATEGORIES][GET]", error);
 		return new NextResponse("Error Interno", { status: 500 });
 	}
 }

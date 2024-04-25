@@ -3,11 +3,11 @@
 import { Plus } from "lucide-react";
 import { Button } from "@ui/button";
 import Heading from "@ui/heading";
-import { Separator } from "@radix-ui/react-separator";
 import { useParams, useRouter } from "next/navigation";
 import { columns, type BillboardColumn } from "./BillboardsColumn";
 import { DataTable } from "./BillboardsDataTable";
 import ApiLists from "../api/ApiLists";
+import { Separator } from "@ui/separator";
 
 interface BillboardClientProps {
 	billboards: BillboardColumn[];

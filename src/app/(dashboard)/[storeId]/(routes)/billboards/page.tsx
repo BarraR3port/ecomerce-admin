@@ -8,6 +8,9 @@ export default async function BillBoardsPage({ params }: { params: { storeId: st
 	const billboards = await prisma.billboard.findMany({
 		where: {
 			storeId: params.storeId
+		},
+		orderBy: {
+			createdAt: "desc"
 		}
 	});
 
