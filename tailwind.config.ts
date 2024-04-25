@@ -1,5 +1,3 @@
-import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
 import { withUt } from "uploadthing/tw";
 
 export default withUt({
