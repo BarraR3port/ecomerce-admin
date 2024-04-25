@@ -1,4 +1,4 @@
-import { type InferType, object, string, array, boolean, number } from "yup";
+import { type InferType, array, boolean, number, object, string } from "yup";
 
 export const ProductFormSchema = object({
 	name: string()

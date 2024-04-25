@@ -1,7 +1,7 @@
 import { createRouteHandler } from "uploadthing/next";
 
-import { ourFileRouter } from "./core";
 import { utapi } from "@/lib/uploadthing";
+import { ourFileRouter } from "./core";
 
 // Export routes for Next App Router
 export const { GET, POST } = createRouteHandler({

@@ -6,11 +6,11 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import "./globals.css";
-import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
-import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 

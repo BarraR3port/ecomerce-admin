@@ -1,5 +1,5 @@
-import type { Column } from "@/components/size/Column";
 import { Client } from "@/components/size/Client";
+import type { Column } from "@/components/size/Column";
 import prisma from "@/lib/prismadb";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
