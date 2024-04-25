@@ -66,17 +66,13 @@ export async function GET(
 			return new NextResponse("ID de la tienda requerido", { status: 400 });
 		}
 
-		const { userId } = auth();
-		if (!userId) return new NextResponse("Sin autorización", { status: 401 });
-
-		const store = await prisma.store.findMany({
+		const billboards = await prisma.billboard.findMany({
 			where: {
-				id: params.storeId,
-				userId
+				storeId: params.storeId
 			}
 		});
 
-		return NextResponse.json(store);
+		return NextResponse.json(billboards);
 	} catch (error) {
 		console.log("[BILLBOARDS][POST]", error);
 		return new NextResponse("Error Interno", { status: 500 });
