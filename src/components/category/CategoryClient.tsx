@@ -7,7 +7,7 @@ import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import ApiLists from "../api/ApiLists";
 import { type CategoryColumn, columns } from "./CategoriesColumn";
-import { DataTable } from "./CategoriesDataTable";
+import { DataTable } from "@ui/data-table";
 
 interface CategoryClientProps {
 	categories: CategoryColumn[];
@@ -29,11 +29,11 @@ export function CategoryClient({ categories }: CategoryClientProps) {
 					variant="outline"
 				>
 					<Plus className="mr-2 w-4 h-4" />
-					Agregar Categoría
+					Crear Categoría
 				</Button>
 			</div>
 			<Separator />
-			<DataTable columns={columns} data={categories} searchKey="label" />
+			<DataTable columns={columns} data={categories} searchKey="name" />
 			<Heading title="API" description="Llamados a la api para Categorías" />
 			<Separator />
 			<ApiLists entityName="categories" entityIdName="categoryId" />

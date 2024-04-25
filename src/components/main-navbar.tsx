@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
-export default function MainNavBar({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
+export default function MainNavBar({ className, ..._props }: React.HTMLAttributes<HTMLElement>) {
 	const pathname = usePathname();
 	const params = useParams();
 	const routes = [
@@ -17,6 +17,11 @@ export default function MainNavBar({ className, ...props }: React.HTMLAttributes
 			href: `/${params.storeId}/categories`,
 			label: "Categorías",
 			active: pathname.includes(`/${params.storeId}/categories`)
+		},
+		{
+			href: `/${params.storeId}/sizes`,
+			label: "Medidas",
+			active: pathname.includes(`/${params.storeId}/sizes`)
 		},
 		{
 			href: `/${params.storeId}/settings`,

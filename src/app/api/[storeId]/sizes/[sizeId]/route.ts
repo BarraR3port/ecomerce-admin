@@ -1,7 +1,6 @@
 import prisma from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { UTApi } from "uploadthing/server";
 
 export async function GET(
 	_req: Request,
@@ -9,24 +8,24 @@ export async function GET(
 		params
 	}: {
 		params: {
-			billboardId: string;
+			sizeId: string;
 		};
 	}
 ) {
 	try {
-		if (!params.billboardId) {
-			return new NextResponse("ID de la cartelera requerido", { status: 400 });
+		if (!params.sizeId) {
+			return new NextResponse("ID de la medida requerida", { status: 400 });
 		}
 
-		const billboard = await prisma.billboard.findMany({
+		const size = await prisma.size.findMany({
 			where: {
-				id: params.billboardId
+				id: params.sizeId
 			}
 		});
 
-		return NextResponse.json(billboard);
+		return NextResponse.json(size);
 	} catch (error) {
-		console.log("[BILLBOARDS][GET]", error);
+		console.log("[SIZE][GET]", error);
 		return new NextResponse("Error Interno", { status: 500 });
 	}
 }
@@ -38,7 +37,7 @@ export async function PATCH(
 	}: {
 		params: {
 			storeId: string;
-			billboardId: string;
+			sizeId: string;
 		};
 	}
 ) {
@@ -46,8 +45,8 @@ export async function PATCH(
 		if (!params.storeId) {
 			return new NextResponse("ID de la tienda requerido", { status: 400 });
 		}
-		if (!params.billboardId) {
-			return new NextResponse("ID de la cartelera requerido", { status: 400 });
+		if (!params.sizeId) {
+			return new NextResponse("ID de la medida requerida", { status: 400 });
 		}
 
 		const { userId } = auth();
@@ -55,10 +54,10 @@ export async function PATCH(
 
 		const body = await req.json();
 
-		const { label, imageUrl } = body;
+		const { name, value } = body;
 
-		if (!label) return new NextResponse("Etiqueta requerida", { status: 400 });
-		if (!imageUrl) return new NextResponse("Url de la imagen requerida", { status: 400 });
+		if (!name) return new NextResponse("Nombre requerida", { status: 400 });
+		if (!value) return new NextResponse("Valor requerido", { status: 400 });
 
 		const storeByUserId = await prisma.store.findFirst({
 			where: {
@@ -69,19 +68,19 @@ export async function PATCH(
 
 		if (!storeByUserId) return new NextResponse("No se encontró la tienda", { status: 404 });
 
-		const billboard = await prisma.billboard.updateMany({
+		const size = await prisma.size.updateMany({
 			where: {
-				id: params.billboardId
+				id: params.sizeId
 			},
 			data: {
-				label,
-				imageUrl
+				name,
+				value
 			}
 		});
 
-		return NextResponse.json(billboard);
+		return NextResponse.json(size);
 	} catch (error) {
-		console.log("[BILLBOARDS][PATCH]", error);
+		console.log("[SIZE][PATCH]", error);
 		return new NextResponse("Error Interno", { status: 500 });
 	}
 }
@@ -93,7 +92,7 @@ export async function DELETE(
 	}: {
 		params: {
 			storeId: string;
-			billboardId: string;
+			sizeId: string;
 		};
 	}
 ) {
@@ -101,8 +100,8 @@ export async function DELETE(
 		if (!params.storeId) {
 			return new NextResponse("ID de la tienda requerido", { status: 400 });
 		}
-		if (!params.billboardId) {
-			return new NextResponse("ID de la cartelera requerido", { status: 400 });
+		if (!params.sizeId) {
+			return new NextResponse("ID de la medida requerida", { status: 400 });
 		}
 
 		const { userId } = auth();
@@ -117,21 +116,15 @@ export async function DELETE(
 
 		if (!storeByUserId) return new NextResponse("No se encontró la tienda", { status: 404 });
 
-		const billboard = await prisma.billboard.delete({
+		const size = await prisma.size.delete({
 			where: {
-				id: params.billboardId
+				id: params.sizeId
 			}
 		});
 
-		const newUrl = billboard.imageUrl.substring(billboard.imageUrl.lastIndexOf("/") + 1);
-		const utapi = new UTApi();
-		await utapi.deleteFiles(newUrl).catch(error => {
-			console.log("[BILLBOARDS][DELETE][UTAPI]", error);
-		});
-
-		return NextResponse.json(billboard);
+		return NextResponse.json(size);
 	} catch (error) {
-		console.log("[BILLBOARDS][DELETE]", error);
+		console.log("[SIZE][DELETE]", error);
 		return new NextResponse("Error Interno", { status: 500 });
 	}
 }

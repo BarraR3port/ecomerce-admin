@@ -6,14 +6,14 @@ import { Separator } from "@ui/separator";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import ApiLists from "../api/ApiLists";
-import { type BillboardColumn, columns } from "./BillboardsColumn";
+import { type SizeColumn, columns } from "./SizesColumn";
 import { DataTable } from "@ui/data-table";
 
-interface BillboardClientProps {
-	billboards: BillboardColumn[];
+interface SizeClientProps {
+	sizes: SizeColumn[];
 }
 
-export function BillboardClient({ billboards }: BillboardClientProps) {
+export function SizeClient({ sizes }: SizeClientProps) {
 	const router = useRouter();
 
 	const params = useParams();
@@ -21,22 +21,22 @@ export function BillboardClient({ billboards }: BillboardClientProps) {
 	return (
 		<>
 			<div className="flex items-center justify-between">
-				<Heading title={`Carteleras (${billboards.length})`} description="Carteleras de la tienda" />
+				<Heading title={`Medidas (${sizes.length})`} description="Medida de la tienda" />
 				<Button
 					onClick={() => {
-						router.push(`/${params.storeId}/billboards/new`);
+						router.push(`/${params.storeId}/sizes/new`);
 					}}
 					variant="outline"
 				>
 					<Plus className="mr-2 w-4 h-4" />
-					Crear Cartelera
+					Crear Medida
 				</Button>
 			</div>
 			<Separator />
-			<DataTable columns={columns} data={billboards} searchKey="label" />
-			<Heading title="API" description="Llamados a la api para Carteleras" />
+			<DataTable columns={columns} data={sizes} searchKey="name" />
+			<Heading title="API" description="Llamados a la api para Medida" />
 			<Separator />
-			<ApiLists entityName="billboards" entityIdName="billboardId" />
+			<ApiLists entityName="sizes" entityIdName="sizeId" />
 		</>
 	);
 }

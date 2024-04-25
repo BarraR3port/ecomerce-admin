@@ -3,7 +3,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import CategoryCellAction from "./CategoryCellAction";
 import CategoryCellIdAction from "./CategoryCellIdAction";
-import BillboardCellImage from "./CategoryCellImage";
 
 export type CategoryColumn = {
 	id: string;

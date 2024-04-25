@@ -22,7 +22,7 @@ export default function AlertModal({ open, onClose, onConfirm, loading }: AlertM
 	}
 
 	return (
-		<Modal title="Estás seguro?" description="Esta acción no se puede deshacer" open={open} onClose={onClose}>
+		<Modal title="¿Estás seguro?" description="Esta acción no se puede deshacer" open={open} onClose={onClose}>
 			<div className="pt-6 space-x-2 flex items-center justify-end w-full">
 				<Button variant="secondary" onClick={onClose} disabled={loading}>
 					Cancelar

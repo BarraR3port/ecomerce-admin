@@ -122,8 +122,6 @@ export async function DELETE(
 			}
 		});
 
-		console.log("[CATEGORY][DELETE]", category);
-
 		return NextResponse.json(category);
 	} catch (error) {
 		console.log("[CATEGORY][DELETE]", error);
