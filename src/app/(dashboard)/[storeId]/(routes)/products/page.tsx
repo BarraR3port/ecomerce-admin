@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { storeId: string } }) 
 			name: product.name,
 			isFeatured: product.isFeatured,
 			isArchived: product.isArchived,
-			price: priceFormatter.format(product.price.toNumber()),
+			price: priceFormatter.format(product.price),
 			category: product.category.name,
 			size: product.size.name,
 			color: product.color.value,

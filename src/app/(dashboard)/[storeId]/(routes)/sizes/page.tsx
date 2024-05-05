@@ -27,7 +27,7 @@ export default async function SizePage({ params }: { params: { storeId: string }
 	return (
 		<div className="flex-col">
 			<div className="flex-1 space-y-4 p-5 pt-6">
-				<eClient sizes={formattedSizes} />
+				<Client sizes={formattedSizes} />
 			</div>
 		</div>
 	);

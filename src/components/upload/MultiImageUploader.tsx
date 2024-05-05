@@ -83,7 +83,7 @@ export function MultiUploader({ images, onChange, onRemove, multiple = false }: 
 
 	const fileList = useMemo(() => {
 		return files.map(file => {
-			return <ImageUpload url={file.url} onRemove={() => deleteFile(file)} />;
+			return <ImageUpload key={file.url} url={file.url} onRemove={() => deleteFile(file)} />;
 		});
 	}, [files, progress, uploading]);
 
@@ -104,7 +104,7 @@ export function MultiUploader({ images, onChange, onRemove, multiple = false }: 
 			<div className="space-y-2">
 				<div className="grid items-center content-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 w-full gap-y-4">
 					{images.map(image => (
-						<ImageUpload url={image.url} onRemove={onRemove} saved />
+						<ImageUpload key={image.url} url={image.url} onRemove={onRemove} saved />
 					))}
 				</div>
 				<div className="grid items-center content-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 w-full gap-y-4">

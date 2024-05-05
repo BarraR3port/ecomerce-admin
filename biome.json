@@ -46,11 +46,6 @@
 		}
 	},
 	"files": {
-		"ignore": [
-			"node_modules/**",
-			"build/**",
-			"dist/**",
-			".next/**"
-		]
+		"ignore": ["node_modules/**", "build/**", "dist/**", ".next/**"]
 	}
 }
