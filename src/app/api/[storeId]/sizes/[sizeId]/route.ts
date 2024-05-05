@@ -17,13 +17,13 @@ export async function GET(
 			return new NextResponse("ID de la medida requerida", { status: 400 });
 		}
 
-		const size = await prisma.size.findMany({
+		const sizes = await prisma.size.findMany({
 			where: {
 				id: params.sizeId
 			}
 		});
 
-		return NextResponse.json(size);
+		return NextResponse.json(sizes);
 	} catch (error) {
 		console.log("[SIZE][GET]", error);
 		return new NextResponse("Error Interno", { status: 500 });

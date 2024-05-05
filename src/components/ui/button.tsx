@@ -56,7 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			>
 				{prevIcon && <div className="left-2 absolute">{prevIcon}</div>}
 				{props.children}
-				{loading && <LoaderCircle className={cn("right-2 animate-spin absolute")} size={14} />}
+				{loading && <LoaderCircle className="right-2 animate-spin absolute" size={14} />}
 			</Comp>
 		);
 	}

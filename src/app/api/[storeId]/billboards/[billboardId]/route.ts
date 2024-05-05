@@ -18,7 +18,7 @@ export async function GET(
 			return new NextResponse("ID de la cartelera requerido", { status: 400 });
 		}
 
-		const billboard = await prisma.billboard.findMany({
+		const billboard = await prisma.billboard.findFirst({
 			where: {
 				id: params.billboardId
 			}

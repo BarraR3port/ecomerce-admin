@@ -15,8 +15,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "J&B Marketplace - Admin Panel",
-	description: "El mejor panel de administración para tu negocio"
+	title: "Marketplace Admin Panel",
+	description: "El mejor panel de administración para tus negocios"
 };
 
 export default function RootLayout({

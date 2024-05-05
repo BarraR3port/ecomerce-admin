@@ -18,7 +18,7 @@ export async function GET(
 			return new NextResponse("ID del producto requerido", { status: 400 });
 		}
 
-		const products = await prisma.product.findMany({
+		const product = await prisma.product.findFirst({
 			where: {
 				id: params.productId
 			},
@@ -30,7 +30,7 @@ export async function GET(
 			}
 		});
 
-		return NextResponse.json(products);
+		return NextResponse.json(product);
 	} catch (error) {
 		console.log("[PRODUCT][GET]", error);
 		return new NextResponse("Error Interno", { status: 500 });

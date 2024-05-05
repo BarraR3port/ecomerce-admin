@@ -17,9 +17,12 @@ export async function GET(
 			return new NextResponse("ID de la categoría requerido", { status: 400 });
 		}
 
-		const category = await prisma.category.findMany({
+		const category = await prisma.category.findFirst({
 			where: {
 				id: params.categoryId
+			},
+			include: {
+				billboard: true
 			}
 		});
 
