@@ -9,6 +9,11 @@ export default function MainNavBar({ className, ..._props }: React.HTMLAttribute
 	const params = useParams();
 	const routes = [
 		{
+			href: `/${params.storeId}`,
+			label: "Dashboard",
+			active: pathname.includes(`/${params.storeId}`)
+		},
+		{
 			href: `/${params.storeId}/products`,
 			label: "Productos",
 			active: pathname.includes(`/${params.storeId}/products`)
