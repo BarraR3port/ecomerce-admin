@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check --apply-unsafe .",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "4.29.12",
@@ -62,5 +63,7 @@
     "tailwindcss": "3.4.3",
     "typescript": "5"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }
