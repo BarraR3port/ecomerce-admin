@@ -11,7 +11,7 @@ export default function MainNavBar({ className, ..._props }: React.HTMLAttribute
 		{
 			href: `/${params.storeId}`,
 			label: "Dashboard",
-			active: pathname.includes(`/${params.storeId}`)
+			active: pathname === `/${params.storeId}`
 		},
 		{
 			href: `/${params.storeId}/products`,
