@@ -9,11 +9,13 @@ export default async function BillBoardPage({
 		billboardId: string;
 	};
 }) {
-	const billboard = await prisma.billboard.findUnique({
-		where: {
-			id: params.billboardId
-		}
-	});
+	const billboard = await prisma.billboard
+		.findUnique({
+			where: {
+				id: params.billboardId
+			}
+		})
+		.catch(() => null);
 
 	return (
 		<div className="flex-col">

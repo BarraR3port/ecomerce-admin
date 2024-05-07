@@ -9,11 +9,13 @@ export default async function SizePage({
 		storeId: string;
 	};
 }) {
-	const size = await prisma.size.findUnique({
-		where: {
-			id: params.sizeId
-		}
-	});
+	const size = await prisma.size
+		.findUnique({
+			where: {
+				id: params.sizeId
+			}
+		})
+		.catch(() => null);
 
 	return (
 		<div className="flex-col">

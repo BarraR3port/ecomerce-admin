@@ -10,17 +10,21 @@ export default async function CategoryPage({
 		storeId: string;
 	};
 }) {
-	const category = await prisma.category.findUnique({
-		where: {
-			id: params.categoryId
-		}
-	});
+	const category = await prisma.category
+		.findUnique({
+			where: {
+				id: params.categoryId
+			}
+		})
+		.catch(() => null);
 
-	const billboards = await prisma.billboard.findMany({
-		where: {
-			storeId: params.storeId
-		}
-	});
+	const billboards = await prisma.billboard
+		.findMany({
+			where: {
+				storeId: params.storeId
+			}
+		})
+		.catch(() => []);
 
 	return (
 		<div className="flex-col">

@@ -15,12 +15,14 @@ export default async function SettingsPage({ params }: SettingsPageProps) {
 		redirect("/sign-in");
 	}
 
-	const store = await prisma.store.findFirst({
-		where: {
-			id: params.storeId,
-			userId: userId
-		}
-	});
+	const store = await prisma.store
+		.findFirst({
+			where: {
+				id: params.storeId,
+				userId: userId
+			}
+		})
+		.catch(() => null);
 
 	if (!store) {
 		redirect("/");
