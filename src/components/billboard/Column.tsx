@@ -10,6 +10,7 @@ export type Column = {
 	label: string;
 	imageUrl: string;
 	createdAt: string;
+	hiddenLabel: boolean;
 };
 
 export const columns: ColumnDef<Column>[] = [
@@ -26,6 +27,11 @@ export const columns: ColumnDef<Column>[] = [
 	{
 		accessorKey: "label",
 		header: "Etiqueta"
+	},
+	{
+		accessorKey: "hiddenLabel",
+		header: "Título Oculto",
+		cell: ({ row }) => (row.original.hiddenLabel ? "Si" : "No")
 	},
 	{
 		accessorKey: "createdAt",

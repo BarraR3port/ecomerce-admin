@@ -22,10 +22,11 @@ export async function POST(
 
 		const body = await req.json();
 
-		const { label, imageUrl } = body;
+		const { label, imageUrl, hiddenLabel } = body;
 
 		if (!label) return new NextResponse("Etiqueta requerida", { status: 400 });
 		if (!imageUrl) return new NextResponse("Url de la imagen requerida", { status: 400 });
+		if (!hiddenLabel) return new NextResponse("Etiqueta oculta requerida", { status: 400 });
 
 		const storeByUserId = await prisma.store.findFirst({
 			where: {
@@ -40,6 +41,7 @@ export async function POST(
 			data: {
 				label,
 				imageUrl,
+				hiddenLabel,
 				storeId: params.storeId
 			}
 		});

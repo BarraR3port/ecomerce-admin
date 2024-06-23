@@ -21,7 +21,8 @@ export default async function BillBoardsPage({ params }: { params: { storeId: st
 			imageUrl: billboard.imageUrl,
 			createdAt: format(billboard.createdAt, "dd-MMMM-yy HH:mm", {
 				locale: es
-			})
+			}),
+			hiddenLabel: billboard.hiddenLabel
 		};
 	});
 	return (
