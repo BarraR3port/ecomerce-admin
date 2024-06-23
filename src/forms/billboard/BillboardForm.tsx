@@ -2,7 +2,8 @@
 
 import ImageUpload from "@/components/billboard/ImageUpload";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -37,7 +38,8 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 		resolver: yupResolver(BillboardFormSchema),
 		defaultValues: billboard || {
 			label: "",
-			imageUrl: ""
+			imageUrl: "",
+			hiddenLabel: false
 		}
 	});
 
@@ -119,7 +121,7 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 w-full flex-col">
 					<div className="space-y-2">
-						<div className="grid grid-cols-3 ">
+						<div className="grid grid-cols-3 gap-4">
 							<FormField
 								control={form.control}
 								name="label"
@@ -134,6 +136,26 @@ export default function BillboardForm({ billboard }: BillboardFormProps) {
 												{...field}
 											/>
 										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="hiddenLabel"
+								render={({ field }) => (
+									<FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+										<FormControl>
+											<Checkbox checked={field.value} onCheckedChange={field.onChange} />
+										</FormControl>
+										<div className="space-y-1 leading-none">
+											<FormLabel>Título Oculto</FormLabel>
+											<FormDescription>
+												Si activas esta opción, el título de la cartelera no se mostrará en la
+												tienda.
+											</FormDescription>
+										</div>
+
 										<FormMessage />
 									</FormItem>
 								)}

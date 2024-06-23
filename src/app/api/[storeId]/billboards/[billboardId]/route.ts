@@ -55,10 +55,11 @@ export async function PATCH(
 
 		const body = await req.json();
 
-		const { label, imageUrl } = body;
+		const { label, imageUrl, hiddenLabel } = body;
 
 		if (!label) return new NextResponse("Etiqueta requerida", { status: 400 });
 		if (!imageUrl) return new NextResponse("Url de la imagen requerida", { status: 400 });
+		if (hiddenLabel === undefined) return new NextResponse("Etiqueta oculta requerida", { status: 400 });
 
 		const storeByUserId = await prisma.store.findFirst({
 			where: {
@@ -75,7 +76,8 @@ export async function PATCH(
 			},
 			data: {
 				label,
-				imageUrl
+				imageUrl,
+				hiddenLabel
 			}
 		});
 
